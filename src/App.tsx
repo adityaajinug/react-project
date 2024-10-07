@@ -9,7 +9,9 @@ function App() {
   return (
     <>
       <section className="flex justify-center items-center flex-col h-screen gap-6 bg-black">
-        <h1 className="text-3xl text-red-400 font-semibold">Hello world!</h1>
+        <h1 className="text-3xl text-red-400 font-semibold">
+          Hello world React Ts!
+        </h1>
         <div className="flex gap-3">
           <a href="https://vitejs.dev" target="_blank">
             <img src={viteLogo} className="w-16" alt="Vite logo" />
@@ -18,7 +20,7 @@ function App() {
             <img src={reactLogo} className="w-16" alt="React logo" />
           </a>
         </div>
-        <h1>Vite + React</h1>
+        <h1>Vite + React Ts</h1>
         <div className="flex justify-center flex-col items-center">
           <button
             className="bg-[#1a1a1a] text-white px-3 py-2 rounded-md focus:border-2 focus:border-blue-500 max-w-[140px]"
