@@ -1,9 +1,22 @@
-const Input: React.FC = () => {
+import Input from "@/components/Elements/Input/Input";
+import Label from "@/components/Elements/Input/Label";
+import { InputType, LabelType } from "@/types/input";
+interface InputLabelProps {
+    labelValue: LabelType;
+    InputValue: InputType;
+}
+
+
+const InputLabel: React.FC<InputLabelProps> = (props) => {
+    const {labelValue, InputValue} = props
     return (
         <>
-        <input type="email" placeholder="johndoe@email.com" className="py-3 px-4 border-webstyle-gray-600 border border-solid border-webstyle-grey-600 rounded-lg bg-webstyle-grey-0" id="email" />
+        <div className="flex gap-2 flex-col w-full">
+            <Label labelName={labelValue.labelName} idFor={labelValue.idFor} optionalLink={labelValue.optionalLink}/>
+            <Input type={InputValue.type} name={InputValue.name} id={InputValue.id} placeholder={InputValue.placeholder} />
+        </div>
         </>
     )
 }
 
-export default Input;
+export default InputLabel;
