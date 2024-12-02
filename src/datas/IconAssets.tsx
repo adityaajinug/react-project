@@ -8,6 +8,12 @@ import goal from "@/assets/icons/ic-goal.svg";
 import transaction from "@/assets/icons/ic-transaction.svg";
 import ballance from "@/assets/icons/ic-ballance.svg"
 import bullets from "@/assets/icons/ic-bullets.svg";
+import mastercard from "@/assets/icons/ic-mastercard.svg";
+import arrowMasterCard from "@/assets/icons/ic-arrow-mastercard.svg";
+import gamepad from "@/assets/icons/ic-gamepad.svg";
+import shopping from  "@/assets/icons/ic-shopping.svg"
+import transport from "@/assets/icons/ic-transport.svg"
+import food from "@/assets/icons/ic-food.svg"
 
 export const iconAssets = {
     overview,
@@ -19,8 +25,13 @@ export const iconAssets = {
     goal,
     transaction,
     ballance,
-    bullets
-    
+    bullets,
+    mastercard,
+    arrowMasterCard,
+    gamepad,
+    shopping,
+    transport,
+    food
 }
 
 interface ImageAssetsType {

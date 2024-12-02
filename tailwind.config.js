@@ -21,6 +21,8 @@ export default {
             danger: "#E73D1C",
             success: "#4DAF6E",
             black: "#191D23",
+            white75: "rgba(255, 255, 255, 0.75)",
+            special: "rgba(210, 210, 210, 0.25)"
           },
         },
       },
