@@ -78,7 +78,7 @@ const DashboardPage: React.FC = () => {
                     <div className="xl:col-span-4">
                         <CardGeneral title='Recent Transaction'>
                             <div className="flex gap-5 mb-3">
-                                <button type="button">All</button>
+                                <button type="button" className='active:text-webstyle-primary hover:text-webstyle-primary border-b border-solid border-webstyle-primary'>All</button>
                                 <button type="button">Revenue</button>
                                 <button type="button">Expenses</button>
                             </div>
@@ -165,9 +165,86 @@ const DashboardPage: React.FC = () => {
                             <div className="min-h-[228px]">statistics</div>
                         </CardGeneral>
                         <CardGeneral title='Expense Breakdown'>
-                            <div className="grid grid-cols-12 gap-4">
-                                <div className="col-span-4">
-                                    
+                            <div className="grid grid-cols-12 gap-5">
+                                <div className="col-span-4 flex gap-6 items-center">
+                                    <div className="rounded-lg bg-webstyle-addon-special px-2 py-4 flex items-center min-w-14">
+                                        <img src={iconAssets.housing} alt="" className="w-full h-full" />
+                                    </div>
+                                    <div className="flex-flex-col">
+                                        <h4 className="font-medium text-webstyle-grey-200 text-base">Housing</h4>
+                                        <h3 className="font-bold text-xl">$250.00</h3>
+                                        <div className="flex gap-2 items-center">
+                                            <h6 className="text-webstyle-grey-300">15%*</h6>
+                                            <img src={iconAssets.arrowUp} alt="" className="w-4 h-4" />
+                                        </div>
+                                    </div>
+                                    <div className="min-w-12">
+                                        <img src={iconAssets.arrowRight} alt="" className="w-6 h-6" />
+                                    </div>
+                                </div>
+                                <div className="col-span-4 flex gap-6 items-center">
+                                    <div className="rounded-lg bg-webstyle-addon-special px-2 py-4 flex items-center min-w-14">
+                                        <img src={iconAssets.housing} alt="" className="w-full h-full" />
+                                    </div>
+                                    <div className="flex-flex-col">
+                                        <h4 className="font-medium text-webstyle-grey-200 text-base">Housing</h4>
+                                        <h3 className="font-bold text-xl">$250.00</h3>
+                                        <div className="flex gap-2 items-center">
+                                            <h6 className="text-webstyle-grey-300">15%*</h6>
+                                            <img src={iconAssets.arrowUp} alt="" className="w-4 h-4" />
+                                        </div>
+                                    </div>
+                                    <div className="min-w-12">
+                                        <img src={iconAssets.arrowRight} alt="" className="w-6 h-6" />
+                                    </div>
+                                </div>
+                                <div className="col-span-4 flex gap-6 items-center">
+                                    <div className="rounded-lg bg-webstyle-addon-special px-2 py-4 flex items-center min-w-14">
+                                        <img src={iconAssets.housing} alt="" className="w-full h-full" />
+                                    </div>
+                                    <div className="flex-flex-col">
+                                        <h4 className="font-medium text-webstyle-grey-200 text-base">Housing</h4>
+                                        <h3 className="font-bold text-xl">$250.00</h3>
+                                        <div className="flex gap-2 items-center">
+                                            <h6 className="text-webstyle-grey-300">15%*</h6>
+                                            <img src={iconAssets.arrowUp} alt="" className="w-4 h-4" />
+                                        </div>
+                                    </div>
+                                    <div className="min-w-12">
+                                        <img src={iconAssets.arrowRight} alt="" className="w-6 h-6" />
+                                    </div>
+                                </div>
+                                <div className="col-span-4 flex gap-6 items-center">
+                                    <div className="rounded-lg bg-webstyle-addon-special px-2 py-4 flex items-center min-w-14">
+                                        <img src={iconAssets.housing} alt="" className="w-full h-full" />
+                                    </div>
+                                    <div className="flex-flex-col">
+                                        <h4 className="font-medium text-webstyle-grey-200 text-base">Housing</h4>
+                                        <h3 className="font-bold text-xl">$250.00</h3>
+                                        <div className="flex gap-2 items-center">
+                                            <h6 className="text-webstyle-grey-300">15%*</h6>
+                                            <img src={iconAssets.arrowUp} alt="" className="w-4 h-4" />
+                                        </div>
+                                    </div>
+                                    <div className="min-w-12">
+                                        <img src={iconAssets.arrowRight} alt="" className="w-6 h-6" />
+                                    </div>
+                                </div>
+                                <div className="col-span-4 flex gap-6 items-center">
+                                    <div className="rounded-lg bg-webstyle-addon-special px-2 py-4 flex items-center min-w-14">
+                                        <img src={iconAssets.housing} alt="" className="w-full h-full" />
+                                    </div>
+                                    <div className="flex-flex-col">
+                                        <h4 className="font-medium text-webstyle-grey-200 text-base">Housing</h4>
+                                        <h3 className="font-bold text-xl">$250.00</h3>
+                                        <div className="flex gap-2 items-center">
+                                            <h6 className="text-webstyle-grey-300">15%*</h6>
+                                            <img src={iconAssets.arrowUp} alt="" className="w-4 h-4" />
+                                        </div>
+                                    </div>
+                                    <div className="min-w-12">
+                                        <img src={iconAssets.arrowRight} alt="" className="w-6 h-6" />
+                                    </div>
                                 </div>
                             </div>
                         </CardGeneral>

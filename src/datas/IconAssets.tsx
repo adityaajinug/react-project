@@ -14,6 +14,12 @@ import gamepad from "@/assets/icons/ic-gamepad.svg";
 import shopping from  "@/assets/icons/ic-shopping.svg"
 import transport from "@/assets/icons/ic-transport.svg"
 import food from "@/assets/icons/ic-food.svg"
+import entertainemt from "@/assets/icons/ic-entertainment.svg"
+import others from "@/assets/icons/ic-others.svg"
+import housing from "@/assets/icons/ic-housing.svg"
+import arrowUp from "@/assets/icons/ic-arrow-up.svg"
+import arrowDown from "@/assets/icons/ic-arrow-down.svg"
+import arrowRight from "@/assets/icons/ic-arrow-right.svg"
 
 export const iconAssets = {
     overview,
@@ -31,7 +37,13 @@ export const iconAssets = {
     gamepad,
     shopping,
     transport,
-    food
+    food,
+    entertainemt,
+    others,
+    housing,
+    arrowUp,
+    arrowDown,
+    arrowRight
 }
 
 interface ImageAssetsType {
