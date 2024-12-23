@@ -1,5 +1,4 @@
 import CardGeneral from '@/components/Elements/Card/CardGeneral';
-import { CardTitle } from '@/components/Elements/Card/CardTitle';
 import { MainLayout } from '@/components/Layouts/MainLayout';
 import React from 'react'
 import { iconAssets } from '@/datas/IconAssets';
