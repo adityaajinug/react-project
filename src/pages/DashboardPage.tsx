@@ -3,6 +3,7 @@ import { CardTitle } from '@/components/Elements/Card/CardTitle';
 import { MainLayout } from '@/components/Layouts/MainLayout';
 import React from 'react'
 import { iconAssets } from '@/datas/IconAssets';
+import { CardUpcomingBills } from '@/components/Elements/Card/CardUpcomingBills';
 
 const DashboardPage: React.FC = () => {
     return (
@@ -37,41 +38,8 @@ const DashboardPage: React.FC = () => {
                     </div>
                     <div className="col-span-12 xl:col-span-4">
                     <CardGeneral title='Upcoming Bill'>
-                            <div className="flex flex-col">
-                                <div className="flex justify-between items-center py-3 border-b border-solid border-[#F3F3F3]">
-                                    <div className="flex gap-4">
-                                        <div className="flex flex-col gap-1 bg-webstyle-addon-special px-3 items-center justify-center rounded-lg">
-                                            <h6 className="text-webstyle-grey-300 font-medium">May</h6>
-                                            <h3 className="font-extrabold text-2xl">15</h3>
-                                        </div>
-                                        <div className="flex flex-col gap-1">
-                                            <h3>icon</h3>
-                                            <h3 className="text-base font-semibold text-webstyle-grey-300">Figma - Monthly</h3>
-                                            <p className="text-sm font-medium text-webstyle-grey-200">Last Charge - 14 May, 2022</p>
-                                        </div>
-                                    </div>
-                                    <div className="rounded-lg border border-solid border-webstyle-100 p-4 h-fit">
-                                        $150
-                                    </div>
-                                </div>
-                                <div className="flex justify-between items-center py-3 border-b border-solid border-[#F3F3F3]">
-                                    <div className="flex gap-4">
-                                        <div className="flex flex-col gap-1 bg-webstyle-addon-special px-3 items-center justify-center rounded-lg">
-                                            <h6 className="text-webstyle-grey-300 font-medium">May</h6>
-                                            <h3 className="font-extrabold text-2xl">16</h3>
-                                        </div>
-                                        <div className="flex flex-col gap-1">
-                                            <h3>icon</h3>
-                                            <h3 className="text-base font-semibold text-webstyle-grey-300">Adobe - Yearly</h3>
-                                            <p className="text-sm font-medium text-webstyle-grey-200">Last Charge - 17 Jun, 2023</p>
-                                        </div>
-                                    </div>
-                                    <div className="rounded-lg border border-solid border-webstyle-100 p-4 h-fit">
-                                    $559
-                                    </div>
-                                </div>
-                            </div>
-                        </CardGeneral>
+                        <CardUpcomingBills />
+                    </CardGeneral>
                     </div>
                 </div>
                 <div className="grid grid-cols-12 mt-12 gap-5">

@@ -20,6 +20,8 @@ import housing from "@/assets/icons/ic-housing.svg"
 import arrowUp from "@/assets/icons/ic-arrow-up.svg"
 import arrowDown from "@/assets/icons/ic-arrow-down.svg"
 import arrowRight from "@/assets/icons/ic-arrow-right.svg"
+import figma from "@/assets/icons/ic-figma.svg"
+import adobe from "@/assets/icons/ic-adobe.svg"
 
 export const iconAssets = {
     overview,
@@ -43,7 +45,9 @@ export const iconAssets = {
     housing,
     arrowUp,
     arrowDown,
-    arrowRight
+    arrowRight,
+    figma,
+    adobe
 }
 
 interface ImageAssetsType {
