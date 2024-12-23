@@ -6,6 +6,7 @@ import { iconAssets } from '@/datas/IconAssets';
 import { CardUpcomingBills } from '@/components/Elements/Card/CardUpcomingBills';
 import { CardRecentTransaction } from '@/components/Elements/Card/CardRecentTransaction';
 import { CardAccount } from '@/components/Elements/Card/CardAccount';
+import { CardGoals } from '@/components/Elements/Card/CardGoals';
 
 const DashboardPage: React.FC = () => {
     return (
@@ -19,7 +20,9 @@ const DashboardPage: React.FC = () => {
                         </CardGeneral>
                     </div>
                     <div className="col-span-12 xl:col-span-4">
-                        <CardTitle cardTitle="Goals" cardText="Goal" />
+                    <CardGeneral title='Goals'>
+                           <CardGoals />
+                        </CardGeneral>
                     </div>
                     <div className="col-span-12 xl:col-span-4">
                     <CardGeneral title='Upcoming Bill'>

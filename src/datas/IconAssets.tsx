@@ -22,6 +22,9 @@ import arrowDown from "@/assets/icons/ic-arrow-down.svg"
 import arrowRight from "@/assets/icons/ic-arrow-right.svg"
 import figma from "@/assets/icons/ic-figma.svg"
 import adobe from "@/assets/icons/ic-adobe.svg"
+import edit from  "@/assets/icons/ic-edit.svg"
+import award from "@/assets/icons/ic-award.svg"
+import target from "@/assets/icons/ic-target.svg"
 
 export const iconAssets = {
     overview,
@@ -47,7 +50,10 @@ export const iconAssets = {
     arrowDown,
     arrowRight,
     figma,
-    adobe
+    adobe,
+    edit,
+    award,
+    target
 }
 
 interface ImageAssetsType {
