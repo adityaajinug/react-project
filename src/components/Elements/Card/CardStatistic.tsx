@@ -1,5 +1,6 @@
-import * as React from 'react';
-import { BarsChart } from "@/components/Elements/Chart/BarsChart";  // Import the modularized BarChart component
+import React, {useContext} from 'react';
+import { BarsChart } from "@/components/Elements/Chart/BarsChart";
+import { ThemeContext } from '@/context/ThemeContext';
 
 const dataset = [
   { day: '17 Sun', thisWeek: 250, lastWeek: 50 },
@@ -17,6 +18,7 @@ const valueFormatter = (value: number | null): string => {
 };
 
 export const CardStatistic: React.FC = () => {
+    const { theme } = useContext(ThemeContext)
   const series = [
     {
       dataKey: 'lastWeek',
@@ -27,7 +29,7 @@ export const CardStatistic: React.FC = () => {
     {
       dataKey: 'thisWeek',
       label: 'This Week',
-      color: '#299D91',
+      color: theme.color,
       valueFormatter,
     },
   ];

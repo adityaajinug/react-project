@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { accountDatas } from '@/datas/AccountDatas';
 import MobileStepper from '@mui/material/MobileStepper';
 import Button from '@mui/material/Button';
 import { useTheme } from '@mui/material/styles';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import { ThemeContext } from '@/context/ThemeContext';
 
 export const CardAccount: React.FC = () => {
-  const theme = useTheme();
+  const theme: any = useTheme();
   const [activeStep, setActiveStep] = useState(0);
 
   const maxSteps = accountDatas.length;
@@ -21,6 +22,8 @@ export const CardAccount: React.FC = () => {
   };
 
   const totalBalance = accountDatas.reduce((sum, account) => sum + account.balance, 0);
+
+  const { theme: themeMode } = useContext(ThemeContext)
 
   return (
     <>
@@ -67,15 +70,16 @@ export const CardAccount: React.FC = () => {
             margin: '16px auto',
             display: 'flex',
             justifyContent: 'space-between', 
+            "& .MuiMobileStepper-dotActive": {backgroundColor: themeMode.color}
           }}
         nextButton={
-          <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
+          <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1} sx={{color: themeMode.color}}>
             Next
             {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
           </Button>
         }
         backButton={
-          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+          <Button size="small" onClick={handleBack} disabled={activeStep === 0} sx={{color: themeMode.color}}>
             {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
             Previous
           </Button>

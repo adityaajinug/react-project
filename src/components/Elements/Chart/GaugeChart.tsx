@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   GaugeContainer,
   GaugeValueArc,
   GaugeReferenceArc,
   useGaugeState,
 } from '@mui/x-charts/Gauge';
+import { ThemeContext } from '@/context/ThemeContext';
 interface GaugeChartProps {
     desc: number; 
   }
 const GaugePointer: React.FC = () => {
+  const { theme } = useContext(ThemeContext)
   const { valueAngle, outerRadius, cx, cy } = useGaugeState();
 
   if (valueAngle === null) {
@@ -23,10 +25,10 @@ const GaugePointer: React.FC = () => {
 
   return (
     <g>
-      <circle cx={cx} cy={cy} r={5} fill="#299D91" />
+      <circle cx={cx} cy={cy} r={5} fill={theme.color} />
       <path
         d={`M ${cx} ${cy} L ${target.x} ${target.y}`}
-        stroke="#299D91"
+        stroke={theme.color}
         strokeWidth={3}
       />
     </g>
@@ -34,6 +36,7 @@ const GaugePointer: React.FC = () => {
 };
 
 const GaugeChart: React.FC<GaugeChartProps> = ({desc}) => {
+  const { theme } = useContext(ThemeContext)
   return (
     <GaugeContainer
       width={230}
@@ -43,7 +46,7 @@ const GaugeChart: React.FC<GaugeChartProps> = ({desc}) => {
       value={desc}
       sx={() => ({
         [`& .value-arc`]: {
-          fill: "#299D91",
+          fill: theme.color,
         },
       })}
     >

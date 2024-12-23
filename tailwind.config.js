@@ -5,7 +5,7 @@ export default {
     extend: {
       colors: {
         webstyle: {
-          primary: "#299D91",
+          primary: "var(--color-primary)",
           secondary: "#191919",
           grey: {
             600: "#4B5768",

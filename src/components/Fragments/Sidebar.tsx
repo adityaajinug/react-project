@@ -1,16 +1,37 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { iconAssets } from '@/datas/IconAssets'
 import Logo from '@/components/Elements/Logo/Index';
 import { Link } from 'react-router-dom';
 import { menuItems } from '@/datas/MenuItem';
+import { ThemeContext } from '@/context/ThemeContext';
 
+interface Theme {
+    name: string;
+    bgcolor: string;
+    color: string;
+}
 export const Sidebar: React.FC = () => {
+    const themes: Theme[] = [
+        { name: "theme-green", bgcolor: "bg-[#299D91]", color: "#299D91" },
+        { name: "theme-blue", bgcolor: "bg-[#1E90FF]", color: "#1E90FF" },
+        { name: "theme-purple", bgcolor: "bg-[#6A5ACD]", color: "#6A5ACD" },
+        { name: "theme-pink", bgcolor: "bg-[#DB7093]", color: "#DB7093" },
+        { name: "theme-brown", bgcolor: "bg-[#8B4513]", color: "#8B4513" },
+      ];
+      
+      const context = useContext(ThemeContext);
+
+      if (!context) {
+        throw new Error("ThemeContext must be used within a ThemeContextProvider");
+      }
+    
+      const { theme, setTheme } = context;
   return (
     <>
-        <div className="flex flex-col justify-between gap-16 bg-webstyle-secondary px-4 py-12 xl:px-7 xl:py-12 min-h-screen overflow-y-auto w-fit xl:w-[280px]">
+        <div className={`flex flex-col justify-between gap-16 bg-webstyle-secondary ${theme.name} px-4 py-12 xl:px-7 xl:py-12 min-h-screen overflow-y-auto w-fit xl:w-[380px]`}>
                 <div className="flex flex-col gap-10 w-full">
                     <div className="max-w-28">
-                        <Logo className="text-webstyle-grey-0 w-full" />
+                        <Logo className="text-webstyle-primary w-full" />
                     </div>
                     <div className="flex flex-col gap-4">
                     {menuItems.map((item, index) => (
@@ -22,7 +43,18 @@ export const Sidebar: React.FC = () => {
                         </Link>
                     ))}
                     </div>
+                    <div className="flex gap-2 items-center h-full w-full flex-wrap">
+                        <h5 className='text-white text-base font-semibold'>Themes</h5>
+                        {themes.map((item, index) => (
+                            <div
+                            key={index}
+                            className={`${item.bgcolor} w-8 h-6 rounded-md cursor-pointer`}
+                            onClick={() => setTheme(item)}
+                            ></div>
+                        ))}
+                    </div>
                 </div>
+
                 
                 <div className="flex flex-col gap-11">
                     <a href="#" className="flex items-center justify-center xl:justify-start gap-3 py-4 px-3 bg-opacity-10 rounded bg-white">
