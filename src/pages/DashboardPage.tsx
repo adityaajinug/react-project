@@ -5,6 +5,7 @@ import React from 'react'
 import { iconAssets } from '@/datas/IconAssets';
 import { CardUpcomingBills } from '@/components/Elements/Card/CardUpcomingBills';
 import { CardRecentTransaction } from '@/components/Elements/Card/CardRecentTransaction';
+import { CardAccount } from '@/components/Elements/Card/CardAccount';
 
 const DashboardPage: React.FC = () => {
     return (
@@ -14,24 +15,7 @@ const DashboardPage: React.FC = () => {
                 <div className="grid grid-cols-12 gap-5">
                     <div className="col-span-12 xl:col-span-4">
                         <CardGeneral title='Total Balance'>
-                            <div className="flex justify-between items-center py-3 border-b border-[#F3F3F3]">
-                                <h2 className="text-xl font-extrabold">$240,399</h2>
-                                <p className="text-base text-webstyle-grey-200">All Accounts</p>
-                            </div>
-                            <div className="bg-webstyle-primary rounded-md p-4 flex justify-between items-center mt-3">
-                                <div className="flex flex-col">
-                                    <h5 className="text-webstyle-addon-white75 text-base">Account type</h5>
-                                    <h3 className="text-white text-2xl font-bold">Credit Card</h3>
-                                    <p className="text-webstyle-addon-white75 text-base">**** **** **** 2598</p>
-                                </div>
-                                <div className="flex flex-col gap-3 justify-end items-end">
-                                    <img src={iconAssets.mastercard} alt="mastercard" loading="lazy" className="w-20 " />
-                                    <div className="flex gap-3">
-                                        <h4 className="text-white text-3xl font-semibold">$25000</h4>
-                                        <img src={iconAssets.arrowMasterCard}/>
-                                    </div>
-                                </div>
-                            </div>
+                            <CardAccount />
                         </CardGeneral>
                     </div>
                     <div className="col-span-12 xl:col-span-4">
