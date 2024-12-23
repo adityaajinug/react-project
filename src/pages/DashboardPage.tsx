@@ -4,6 +4,7 @@ import { MainLayout } from '@/components/Layouts/MainLayout';
 import React from 'react'
 import { iconAssets } from '@/datas/IconAssets';
 import { CardUpcomingBills } from '@/components/Elements/Card/CardUpcomingBills';
+import { CardRecentTransaction } from '@/components/Elements/Card/CardRecentTransaction';
 
 const DashboardPage: React.FC = () => {
     return (
@@ -45,86 +46,7 @@ const DashboardPage: React.FC = () => {
                 <div className="grid grid-cols-12 mt-12 gap-5">
                     <div className="xl:col-span-4">
                         <CardGeneral title='Recent Transaction'>
-                            <div className="flex gap-5 mb-3">
-                                <button type="button" className='active:text-webstyle-primary hover:text-webstyle-primary border-b border-solid border-webstyle-primary'>All</button>
-                                <button type="button">Revenue</button>
-                                <button type="button">Expenses</button>
-                            </div>
-                            <div className="py-6 flex justify-between border-b border-solid border-[#F3F3F3]">
-                                <div className="flex gap-4">
-                                    <div className="rounded-lg bg-webstyle-addon-special px-2 py-1 flex items-center">
-                                        <img src={iconAssets.gamepad} alt="" />
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <h3 className="font-semibold text-xl">GTR 5</h3>
-                                        <p className="text-webstyle-grey-200">Gadget & Gear</p>
-                                    </div>
-                                </div>
-                                <div className="flex flex-col">
-                                    <h3 className="font-semibold text-xl text-webstyle-grey-400">$160.00</h3>
-                                    <p className="text-webstyle-grey-200">17 May 2023</p>
-                                </div>
-                            </div>
-                            <div className="py-6 flex justify-between border-b border-solid border-[#F3F3F3]">
-                                <div className="flex gap-4">
-                                    <div className="rounded-lg bg-webstyle-addon-special px-2 py-1 flex items-center">
-                                        <img src={iconAssets.shopping} alt="" />
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <h3 className="font-semibold text-xl">Polo Shirt</h3>
-                                        <p className="text-webstyle-grey-200">XL fashions</p>
-                                    </div>
-                                </div>
-                                <div className="flex flex-col">
-                                    <h3 className="font-semibold text-xl text-webstyle-grey-400">$20.00</h3>
-                                    <p className="text-webstyle-grey-200">17 May 2023</p>
-                                </div>
-                            </div>
-                            <div className="py-6 flex justify-between border-b border-solid border-[#F3F3F3]">
-                                <div className="flex gap-4">
-                                    <div className="rounded-lg bg-webstyle-addon-special px-2 py-1 flex items-center">
-                                        <img src={iconAssets.food} alt="" />
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <h3 className="font-semibold text-xl">Biriyani</h3>
-                                        <p className="text-webstyle-grey-200">Hajir Biriyani</p>
-                                    </div>
-                                </div>
-                                <div className="flex flex-col">
-                                    <h3 className="font-semibold text-xl text-webstyle-grey-400">$10.00</h3>
-                                    <p className="text-webstyle-grey-200">17 May 2023</p>
-                                </div>
-                            </div>
-                            <div className="py-6 flex justify-between border-b border-solid border-[#F3F3F3]">
-                                <div className="flex gap-4">
-                                    <div className="rounded-lg bg-webstyle-addon-special px-2 py-1 flex items-center">
-                                        <img src={iconAssets.shopping} alt="" />
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <h3 className="font-semibold text-xl">Taxi Fare</h3>
-                                        <p className="text-webstyle-grey-200">Uber</p>
-                                    </div>
-                                </div>
-                                <div className="flex flex-col">
-                                    <h3 className="font-semibold text-xl text-webstyle-grey-400">$12.00</h3>
-                                    <p className="text-webstyle-grey-200">17 May 2023</p>
-                                </div>
-                            </div>
-                            <div className="py-6 flex justify-between border-b border-solid border-[#F3F3F3]">
-                                <div className="flex gap-4">
-                                    <div className="rounded-lg bg-webstyle-addon-special px-2 py-1 flex items-center">
-                                        <img src={iconAssets.shopping} alt="" />
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <h3 className="font-semibold text-xl">Keyboard</h3>
-                                        <p className="text-webstyle-grey-200">Gadget & Gear</p>
-                                    </div>
-                                </div>
-                                <div className="flex flex-col">
-                                    <h3 className="font-semibold text-xl text-webstyle-grey-400">$22.00</h3>
-                                    <p className="text-webstyle-grey-200">17 May 2023</p>
-                                </div>
-                            </div>
+                            <CardRecentTransaction />
                         </CardGeneral>
                     </div>
                     <div className="xl:col-span-8">
