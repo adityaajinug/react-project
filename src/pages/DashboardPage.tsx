@@ -7,6 +7,7 @@ import { CardUpcomingBills } from '@/components/Elements/Card/CardUpcomingBills'
 import { CardRecentTransaction } from '@/components/Elements/Card/CardRecentTransaction';
 import { CardAccount } from '@/components/Elements/Card/CardAccount';
 import { CardGoals } from '@/components/Elements/Card/CardGoals';
+import { CardStatistic } from '@/components/Elements/Card/CardStatistic';
 
 const DashboardPage: React.FC = () => {
     return (
@@ -39,7 +40,7 @@ const DashboardPage: React.FC = () => {
                     <div className="xl:col-span-8">
                        <div className="flex flex-col gap-6">
                         <CardGeneral title='Statistics'>
-                            <div className="min-h-[228px]">statistics</div>
+                            <CardStatistic />
                         </CardGeneral>
                         <CardGeneral title='Expense Breakdown'>
                             <div className="grid grid-cols-12 gap-5">
