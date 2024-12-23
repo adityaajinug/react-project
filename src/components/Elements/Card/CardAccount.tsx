@@ -20,10 +20,12 @@ export const CardAccount: React.FC = () => {
     setActiveStep((prevActiveStep) => Math.max(prevActiveStep - 1, 0));
   };
 
+  const totalBalance = accountDatas.reduce((sum, account) => sum + account.balance, 0);
+
   return (
     <>
       <div className="flex justify-between items-center py-3 border-b border-[#F3F3F3]">
-        <h2 className="text-xl font-extrabold">$240,399</h2>
+        <h2 className="text-xl font-extrabold">${totalBalance.toLocaleString('en-US')}</h2>
         <p className="text-base text-webstyle-grey-200">All Accounts</p>
       </div>
 
@@ -47,7 +49,7 @@ export const CardAccount: React.FC = () => {
           />
           <div className="flex gap-3">
             <h4 className="text-white text-3xl font-semibold">
-              {accountDatas[activeStep].balance}
+              ${accountDatas[activeStep].balance}
             </h4>
             <img src={accountDatas[activeStep].arrowIcon} alt="arrow" />
           </div>
