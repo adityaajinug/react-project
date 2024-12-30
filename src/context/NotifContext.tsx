@@ -1,23 +1,28 @@
-import React, { createContext, useState, ReactNode } from "react";
+import React, { createContext, useState, useContext, ReactNode } from "react";
 
+interface MessageType {
+  severity?: "success" | "error" | "info" | "warning"; 
+  message: string; 
+  desc?: string; 
+}
 interface NotifContextType {
-  msg: string | undefined;
-  setMsg: React.Dispatch<React.SetStateAction<string | undefined>>;
+  msg: MessageType | undefined;
+  setMsg: React.Dispatch<React.SetStateAction<MessageType | undefined>>;
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isLoading: boolean;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
-export const NotifContext = createContext<NotifContextType | undefined>(undefined);
+
+const NotifContext = createContext<NotifContextType | undefined>(undefined);
 
 interface NotifContextProviderProps {
   children: ReactNode;
 }
 
 export const NotifContextProvider: React.FC<NotifContextProviderProps> = ({ children }) => {
-  const [msg, setMsg] = useState<string | undefined>(undefined);
-  const [open, setOpen] = useState<boolean>(true);
-
+  const [msg, setMsg] = useState<MessageType | undefined>(undefined);
+  const [open, setOpen] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   return (
@@ -25,4 +30,13 @@ export const NotifContextProvider: React.FC<NotifContextProviderProps> = ({ chil
       {children}
     </NotifContext.Provider>
   );
+};
+
+// Custom hook to access NotifContext
+export const useNotif = (): NotifContextType => {
+  const context = useContext(NotifContext);
+  if (context === undefined) {
+    throw new Error("useNotif must be used within a NotifContextProvider");
+  }
+  return context;
 };

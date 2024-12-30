@@ -1,14 +1,36 @@
 
+import { SimpleBackdrop } from "@/components/Elements/Backdrop/SimpleBackdrop";
 import Logo from "@/components/Elements/Logo/Index";
+import { Notify } from "@/components/Elements/SnakeBar/Notify";
+import { useNotif } from "@/context/NotifContext";
 import { Link } from "react-router-dom";
 interface AuthLayoutProps {
     children: React.ReactNode,
     type: string;
 }
 const AuthLayout: React.FC<AuthLayoutProps> = (props) => {
-    const {children, type} = props
+    const {children, type} = props;
+    const { msg, setMsg, open, setOpen, isLoading, setIsLoading } = useNotif();
+  
+    const handleCloseSnackbar = () => {
+        setOpen(false);
+        setMsg(undefined);
+      };
     return (
         <>
+        <div className="w-full max-w-full">
+            {isLoading && (
+                <SimpleBackdrop isLoading={isLoading} setIsLoading={setIsLoading} />
+            )}
+            {msg && (
+                <Notify
+                    openSnackbar={open}
+                    snackbarSeverity={msg?.severity || "success"}
+                    snackbarMessage={msg?.desc || 'success'}
+                    onClose={handleCloseSnackbar}
+                />
+            )}
+        </div>
         <div className="flex items-center justify-center min-h-screen bg-webstyle-grey-0">
             <div className="max-w-[400px] w-full">
                 <Logo />

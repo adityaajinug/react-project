@@ -9,6 +9,7 @@ import { Snackbar, Alert } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import { useAuth } from "@/context/AuthContext";
+import { useNotif } from "@/context/NotifContext";
 
 interface FormValues {
   email: string;
@@ -18,6 +19,7 @@ interface FormValues {
 const FormSignIn: React.FC = () => {
   const navigate = useNavigate();
   const { login, setIsLoggedIn } = useAuth();
+  const { setMsg, setOpen, setIsLoading } = useNotif();
   const [formData, setFormData] = useState<FormValues>({
     email: "",
     password: "",
@@ -80,6 +82,7 @@ const FormSignIn: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
 
     if (errors.email || errors.password) {
       return;
@@ -98,9 +101,13 @@ const FormSignIn: React.FC = () => {
       console.log("Decoded Token:", decodedToken);
       login(response.data.refreshToken, decodedToken.name);
       setIsLoggedIn(true);
-      setSnackbarMessage("Login successful!");
-      setSnackbarSeverity("success");
-      setOpenSnackbar(true);
+      setIsLoading(false);
+      setOpen(true);
+      setMsg({
+        severity: "success", 
+        message: "Logout successful",
+        desc: "You have successfully logged out.",
+      });
       navigate("/dashboard");
     } catch (error: any) {
       console.error("Login failed:", error);

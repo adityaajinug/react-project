@@ -6,6 +6,7 @@ import { menuItems } from '@/datas/MenuItem';
 import { ThemeContext } from '@/context/ThemeContext';
 import { useAuth } from '@/context/AuthContext';
 import axios from 'axios';
+import { useNotif } from '@/context/NotifContext';
 
 interface Theme {
     name: string;
@@ -30,8 +31,10 @@ export const Sidebar: React.FC = () => {
         const { theme, setTheme } = context;
         const { name, logout } = useAuth();
         const navigate = useNavigate();
+        const { setMsg, setOpen, setIsLoading } = useNotif();
 
         const handleLogout = async () => {
+            setIsLoading(true);
             const refreshToken = localStorage.getItem("refreshToken");
         
             if (!refreshToken) {
@@ -44,6 +47,13 @@ export const Sidebar: React.FC = () => {
                 headers: {
                   Authorization: `Bearer ${refreshToken}`,
                 },
+              });
+              setIsLoading(false);
+              setOpen(true);
+              setMsg({
+                severity: "success", 
+                message: "Logout successful",
+                desc: "You have successfully logged out.",
               });
               logout();
               localStorage.removeItem("refreshToken");
@@ -83,7 +93,7 @@ export const Sidebar: React.FC = () => {
 
                 
                 <div className="flex flex-col gap-11">
-                    <button type='button' onClick={() => handleLogout()} className="flex items-center justify-center xl:justify-start gap-3 py-4 px-3 bg-opacity-10 rounded bg-white">
+                    <button type='button' onClick={() => handleLogout()} className="flex items-center justify-center xl:justify-start gap-3 py-4 px-3 bg-opacity-10 rounded bg-white hover:bg-gray-700">
                         <div>
                             <img src={iconAssets.logout} alt="logout" loading="lazy" />
                         </div>
