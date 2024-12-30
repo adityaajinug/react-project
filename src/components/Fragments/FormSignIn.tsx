@@ -105,8 +105,8 @@ const FormSignIn: React.FC = () => {
       setOpen(true);
       setMsg({
         severity: "success", 
-        message: "Logout successful",
-        desc: "You have successfully logged out.",
+        message: "Login successful",
+        desc: "You have successfully logged In.",
       });
       navigate("/dashboard");
     } catch (error: any) {
