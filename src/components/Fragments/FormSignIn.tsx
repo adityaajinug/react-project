@@ -6,6 +6,9 @@ import { SSOButton } from "@/components/Elements/Button/SSOButton";
 import Checkbox from "@/components/Elements/Checkbox/Index";
 import InputLabel from "@/components/Elements/Input/Index";
 import { Snackbar, Alert } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
+import { useAuth } from "@/context/AuthContext";
 
 interface FormValues {
   email: string;
@@ -13,6 +16,8 @@ interface FormValues {
 }
 
 const FormSignIn: React.FC = () => {
+  const navigate = useNavigate();
+  const { login, setIsLoggedIn } = useAuth();
   const [formData, setFormData] = useState<FormValues>({
     email: "",
     password: "",
@@ -88,9 +93,15 @@ const FormSignIn: React.FC = () => {
         formData
       );
       console.log("Login success:", response.data);
+      localStorage.setItem("refreshToken", response.data.refreshToken);
+      const decodedToken: any = jwtDecode(response.data.refreshToken);
+      console.log("Decoded Token:", decodedToken);
+      login(response.data.refreshToken, decodedToken.name);
+      setIsLoggedIn(true);
       setSnackbarMessage("Login successful!");
       setSnackbarSeverity("success");
       setOpenSnackbar(true);
+      navigate("/dashboard");
     } catch (error: any) {
       console.error("Login failed:", error);
       setSnackbarMessage("Login failed. Please check your credentials.");

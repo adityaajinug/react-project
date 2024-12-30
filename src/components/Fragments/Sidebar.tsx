@@ -1,9 +1,11 @@
 import React, { useContext } from 'react'
 import { iconAssets } from '@/datas/IconAssets'
 import Logo from '@/components/Elements/Logo/Index';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { menuItems } from '@/datas/MenuItem';
 import { ThemeContext } from '@/context/ThemeContext';
+import { useAuth } from '@/context/AuthContext';
+import axios from 'axios';
 
 interface Theme {
     name: string;
@@ -19,13 +21,37 @@ export const Sidebar: React.FC = () => {
         { name: "theme-brown", bgcolor: "bg-[#8B4513]", color: "#8B4513" },
       ];
       
-      const context = useContext(ThemeContext);
+        const context = useContext(ThemeContext);
 
-      if (!context) {
-        throw new Error("ThemeContext must be used within a ThemeContextProvider");
-      }
+        if (!context) {
+            throw new Error("ThemeContext must be used within a ThemeContextProvider");
+        }
     
-      const { theme, setTheme } = context;
+        const { theme, setTheme } = context;
+        const { name, logout } = useAuth();
+        const navigate = useNavigate();
+
+        const handleLogout = async () => {
+            const refreshToken = localStorage.getItem("refreshToken");
+        
+            if (!refreshToken) {
+              console.error("No refresh token found");
+              return;
+            }
+        
+            try {
+              await axios.get("https://jwt-auth-eight-neon.vercel.app/logout", {
+                headers: {
+                  Authorization: `Bearer ${refreshToken}`,
+                },
+              });
+              logout();
+              localStorage.removeItem("refreshToken");
+              navigate("/");
+            } catch (error) {
+              console.error("Logout failed:", error);
+            }
+          };
   return (
     <>
         <div className={`flex flex-col justify-between gap-16 bg-webstyle-secondary ${theme.name} px-4 py-12 xl:px-7 xl:py-12 min-h-screen overflow-y-auto w-fit xl:w-[380px]`}>
@@ -57,19 +83,19 @@ export const Sidebar: React.FC = () => {
 
                 
                 <div className="flex flex-col gap-11">
-                    <a href="#" className="flex items-center justify-center xl:justify-start gap-3 py-4 px-3 bg-opacity-10 rounded bg-white">
+                    <button type='button' onClick={() => handleLogout()} className="flex items-center justify-center xl:justify-start gap-3 py-4 px-3 bg-opacity-10 rounded bg-white">
                         <div>
                             <img src={iconAssets.logout} alt="logout" loading="lazy" />
                         </div>
                         <h4 className="text-white font-semibold text-base hidden xl:block">Logout</h4>
-                    </a>
+                    </button>
 
                     <div className="border-t py-8 border-white border-opacity-5 flex justify-center xl:justify-between items-center">
                         <div className="max-w-8 max-h-8">
                             <img src={iconAssets.profile} alt="profile" loading="lazy"/>
                         </div>
                         <div className="xl:flex hidden flex-col">
-                            <h4 className="font-semibold text-webstyle-grey-0">Tanzir Rahman</h4>
+                            <h4 className="font-semibold text-webstyle-grey-0">{ name || "John Doe" }</h4>
                             <a href="#" className="text-white text-opacity-50 hover:text-white">View profile</a>
                         </div>
                         <a href="#" className="max-w-6 hidden xl:block">

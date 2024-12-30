@@ -1,11 +1,16 @@
+import { useAuth } from "@/context/AuthContext";
 import DashboardPage from "@/pages/DashboardPage";
 import { ExpensePage } from "@/pages/ExpensePage";
 import ForgotPasswordPage from "@/pages/ForgotPasswordPage";
 import SignInPage from "@/pages/SignInPage";
 import SignUpPage from "@/pages/SignUpPage";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 
 export default function App() {
+  const { isLoggedIn } = useAuth();
+  const RequireAuth = ({ children }: { children: React.ReactNode }) => {
+    return isLoggedIn ? <>{children}</> : <Navigate to="/" />;
+  };
   const myRouter = createBrowserRouter([
     {
       path: "/",
@@ -21,11 +26,11 @@ export default function App() {
     },
     {
       path: "/dashboard",
-      element: <DashboardPage />
+      element: <RequireAuth><DashboardPage /></RequireAuth>
     },
     {
       path: "/expense",
-      element: <ExpensePage />
+      element: <RequireAuth><ExpensePage /></RequireAuth>
     },
   ]);
 

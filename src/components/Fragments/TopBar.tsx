@@ -1,12 +1,15 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
+import { useAuth } from '@/context/AuthContext';
 export const TopBar: React.FC = () => {
+  
+  const { name } = useAuth();
   return (
     <>
     <div className="px-8 py-5 flex justify-between border-b border-gray-300 w-full h-fit">
                     <div className="flex gap-6 items-center">
-                            <h1 className="font-bold text-2xl">Hello Tanzir</h1>
+                            <h1 className="font-bold text-2xl">Hello { name }</h1>
                             <p className="">May 19, 2023</p>
                         </div>
                         <div className="flex items-center gap-10">
