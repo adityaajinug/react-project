@@ -82,11 +82,11 @@ export const Sidebar: React.FC = () => {
                     <div className="flex gap-2 items-center h-full w-full flex-wrap">
                         <h5 className='text-white text-base font-semibold'>Themes</h5>
                         {themes.map((item, index) => (
-                            <div
+                            <button type='button'
                             key={index}
-                            className={`${item.bgcolor} w-8 h-6 rounded-md cursor-pointer`}
+                            className={`${item.bgcolor} w-8 h-6 rounded-md cursor-pointer transition-transform duration-150 active:scale-95`}
                             onClick={() => setTheme(item)}
-                            ></div>
+                            ></button>
                         ))}
                     </div>
                 </div>
