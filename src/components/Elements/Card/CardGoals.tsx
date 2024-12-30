@@ -1,10 +1,45 @@
 import { iconAssets } from '@/datas/IconAssets'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { goalsData } from '@/datas/GoalsDatas'
 import GaugeChart from '@/components/Elements/Chart/GaugeChart'
+import axios from 'axios'
+
+interface Goals {
+    presentAmount: number;
+    targetAmount: number;
+}
 
 export const CardGoals: React.FC = () => {
-    const chartValue: number = (goalsData.presentAmount * 100) / goalsData.targetAmount;
+    const [goals, setGoals] = useState<Goals>({ presentAmount: 0, targetAmount: 0 });
+    const chartValue: number = (goals.presentAmount * 100) / goals.targetAmount;
+    const getData = async () => {
+        try {
+          const refreshToken = localStorage.getItem("refreshToken");
+    
+          const response = await axios.get(
+            "https://jwt-auth-eight-neon.vercel.app/goals",
+            {
+              headers: {
+                Authorization: `Bearer ${refreshToken}`,
+              },
+            }
+          );
+    
+          console.log(response);
+          setGoals({
+            presentAmount: response.data.data[0].present_amount,
+            targetAmount: response.data.data[0].target_amount,
+          })
+        } catch (error: any) {
+          if (error.response) {
+            console.log(error.response);
+          }
+        }
+      }; 
+
+      useEffect(() => {
+        getData();
+      }, []);
   return (
     <>
         <div className="flex justify-between py-2 border-b border-solid border-[#F3F3F3]">
