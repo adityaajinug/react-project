@@ -71,7 +71,7 @@ export const Sidebar: React.FC = () => {
                     </div>
                     <div className="flex flex-col gap-4">
                     {menuItems.map((item, index) => (
-                        <Link to={item.link} key={index} className={`hover:bg-white hover:bg-opacity-10 items-center justify-center xl:justify-start active:bg-webstyle-primary focus:bg-webstyle-primary flex gap-3 py-4 px-3 rounded w-full ${location.pathname == item.link ? "bg-webstyle-primary" : ""}`}>
+                        <Link to={item.link} key={index} className={`hover:bg-white hover:bg-opacity-10 items-center transition-transform duration-150 active:scale-95 justify-center xl:justify-start active:bg-webstyle-primary focus:bg-webstyle-primary flex gap-3 py-4 px-3 rounded w-full ${location.pathname == item.link ? "bg-webstyle-primary" : ""}`}>
                             <div>
                                 <img src={item.icon} alt={item.title} loading="lazy" />
                             </div>
