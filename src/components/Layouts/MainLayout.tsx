@@ -14,8 +14,7 @@ export const MainLayout: React.FC<MainLayoutProps> = (props) => {
     const {childern} = props
     const {theme} = useContext(ThemeContext)
     const { msg, setMsg, open, setOpen, isLoading, setIsLoading } = useNotif();
-    const { backgroundTheme, toggleBackgroundTheme } = useBackgroundTheme();
-    const isDarkMode = backgroundTheme.color === "bg-black";
+    const { backgroundTheme} = useBackgroundTheme();
       
     const handleCloseSnackbar = () => {
       setOpen(false);
