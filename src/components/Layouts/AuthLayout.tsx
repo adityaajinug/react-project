@@ -2,8 +2,10 @@
 import { SimpleBackdrop } from "@/components/Elements/Backdrop/SimpleBackdrop";
 import Logo from "@/components/Elements/Logo/Index";
 import { Notify } from "@/components/Elements/SnakeBar/Notify";
+import { useBackgroundTheme } from "@/context/BackgroundThemeContext";
 import { useNotif } from "@/context/NotifContext";
 import { Link } from "react-router-dom";
+import { FaSun, FaMoon } from "react-icons/fa";
 interface AuthLayoutProps {
     children: React.ReactNode,
     type: string;
@@ -11,11 +13,15 @@ interface AuthLayoutProps {
 const AuthLayout: React.FC<AuthLayoutProps> = (props) => {
     const {children, type} = props;
     const { msg, setMsg, open, setOpen, isLoading, setIsLoading } = useNotif();
+    const { backgroundTheme, toggleBackgroundTheme } = useBackgroundTheme();
+    const isDarkMode = backgroundTheme.color === "bg-black";
+
   
     const handleCloseSnackbar = () => {
         setOpen(false);
         setMsg(undefined);
       };
+
     return (
         <>
         <div className="w-full max-w-full">
@@ -31,7 +37,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = (props) => {
                 />
             )}
         </div>
-        <div className="flex items-center justify-center min-h-screen bg-webstyle-grey-0">
+        <div className={`flex items-center justify-center min-h-screen ${backgroundTheme.color}`}>
             <div className="max-w-[400px] w-full">
                 <Logo />
                 {type === "sign-up" ? (
@@ -71,6 +77,12 @@ const AuthLayout: React.FC<AuthLayoutProps> = (props) => {
                 ): ""}
             </div>
         
+            <button
+                onClick={toggleBackgroundTheme}
+                className="absolute top-4 right-4 p-3 rounded-full bg-gray-800 text-white shadow-md flex items-center justify-center"
+            >
+                {isDarkMode ? <FaSun className="text-yellow-400" /> : <FaMoon className="text-gray-300" />}
+            </button>
         </div>
         </>
     )

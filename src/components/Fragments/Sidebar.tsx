@@ -7,6 +7,8 @@ import { ThemeContext } from '@/context/ThemeContext';
 import { useAuth } from '@/context/AuthContext';
 import axios from 'axios';
 import { useNotif } from '@/context/NotifContext';
+import { useBackgroundTheme } from '@/context/BackgroundThemeContext';
+import { FaMoon, FaSun } from 'react-icons/fa';
 
 interface Theme {
     name: string;
@@ -32,6 +34,9 @@ export const Sidebar: React.FC = () => {
         const { name, logout } = useAuth();
         const navigate = useNavigate();
         const { setMsg, setOpen, setIsLoading } = useNotif();
+        
+            const { backgroundTheme, toggleBackgroundTheme } = useBackgroundTheme();
+            const isDarkMode = backgroundTheme.color === "bg-black";
 
         const handleLogout = async () => {
             setIsLoading(true);
@@ -89,6 +94,16 @@ export const Sidebar: React.FC = () => {
                             ></button>
                         ))}
                     </div>
+                    <div className='flex gap-2 items-center h-full w-full flex-wrap'>
+                        <h5 className='text-white text-base font-semibold'>Background Themes</h5>
+                        <button
+                            onClick={toggleBackgroundTheme}
+                            className="p-3 rounded-full bg-gray-200 text-white shadow-md flex items-center justify-center"
+                            >
+                                {isDarkMode ? <FaSun className="text-yellow-400" /> : <FaMoon className="text-black" />}
+                        </button>      
+                    </div>
+                
                 </div>
 
                 
