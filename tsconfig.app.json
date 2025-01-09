@@ -5,9 +5,10 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
+    "types": ["cypress", "node"],
 
     /* Bundler mode */
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "moduleDetection": "force",
@@ -25,7 +26,8 @@
       "@components/*": ["src/components/*"],
       "@assets/*": ["src/assets/*"],
       "@types/*": ["src/types/*"],
+      "@cypress/*": ["cypress/*"]
     }
   },
-  "include": ["src", "**/*.tsx"]
+ "include": ["src", "**/*.tsx", "**/*.ts",  "cypress/**/*.ts"]
 }
